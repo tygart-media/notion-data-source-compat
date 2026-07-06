@@ -1,0 +1,48 @@
+{
+	"name": "notion-data-source-compat",
+	"version": "1.0.0",
+	"description": "Compatibility shim for Notion's 2025-09-03 API change (database_id -> data_source_id). Query databases and create pages the same way on @notionhq/client v2-v4 and v5+.",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"keywords": [
+		"notion",
+		"notion-api",
+		"notion-sdk",
+		"@notionhq/client",
+		"data-source",
+		"data_source_id",
+		"database_id",
+		"2025-09-03",
+		"migration",
+		"compatibility",
+		"compat-shim",
+		"upgrade"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tygart-media/notion-data-source-compat.git"
+	},
+	"homepage": "https://github.com/tygart-media/notion-data-source-compat#readme",
+	"bugs": {
+		"url": "https://github.com/tygart-media/notion-data-source-compat/issues"
+	},
+	"scripts": {
+		"build": "tsc",
+		"check": "tsc --noEmit"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"peerDependencies": {
+		"@notionhq/client": ">=2.2.15"
+	},
+	"devDependencies": {
+		"@notionhq/client": "^5.22.0",
+		"@types/node": "^22.9.0",
+		"typescript": "^5.8.0"
+	}
+}
