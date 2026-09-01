@@ -23,7 +23,11 @@
 import { Solari } from "@solarisdk/browser"
 import { SolariClient } from "@solarisdk/sdk"
 
-const apiKey = process.env.SOLARI_API_KEY!
+const apiKey = process.env.SOLARI_API_KEY
+if (!apiKey) {
+  console.error("SOLARI_API_KEY is required — https://console.getsolari.com")
+  process.exit(1)
+}
 const PORT = 3000
 
 /** Two images and one link live in the markup. `patched` is the edit a
@@ -106,7 +110,9 @@ try {
   // A directory per stage rather than one file rewritten in place: python's
   // http.server answers If-Modified-Since with a 304, so re-fetching one path
   // can hand back the previous stage. Separate URLs sidestep every cache.
+  await sandbox.files.mkdir("/tmp/site")
   for (const stage of STAGES) {
+    await sandbox.files.mkdir(`/tmp/site/${stage.dir}`)
     await sandbox.files.write(`/tmp/site/${stage.dir}/index.html`, markup(stage.markup))
     await sandbox.files.write(`/tmp/site/${stage.dir}/theme.js`, theme(stage.theme))
   }

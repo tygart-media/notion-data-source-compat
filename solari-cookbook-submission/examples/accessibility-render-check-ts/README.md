@@ -1,11 +1,10 @@
 # Accessibility render check (TypeScript)
 
-Grade the same page twice — once by reading the HTML the server sent, once by
-reading the DOM a visitor actually gets. A browser and a sandbox working
-together.
+Grade the same page twice — once from the HTML the server sent, once from the
+DOM a visitor actually gets. A cloud browser and a sandbox, together.
 
-Static accessibility checkers see the response body. Visitors see the DOM after
-the theme, the consent banner and the recommendation widget have run. Whatever
+Static a11y checkers read the response body. Visitors get the DOM after the
+theme, the consent banner, and the recommendation widget have all run. Anything
 those scripts inject is invisible to the checker, so a page can pass CI and
 still hand a screen-reader user a stack of unlabelled images.
 
@@ -40,8 +39,7 @@ stage          served  rendered
 2-source-fix — what a visitor actually gets:
   - <img> without alt: /assets/related-post.webp
 
-2-source-fix is the one that matters: the served HTML is clean and a browser
-still finds 1.
+2-source-fix is the one that matters: the served HTML is clean and a browser still finds 1.
 ```
 
 Exits non-zero if that gap fails to reproduce, so the example grades itself
